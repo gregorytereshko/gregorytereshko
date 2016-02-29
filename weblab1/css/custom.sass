@@ -1,0 +1,345 @@
+@import "http://webfonts.ru/import/fontinsc.css"
+@import reset.css
+
+// $font-stack: 'Fontin Sans CR SC', sans-serif
+//$font-stack: 'Roboto', sans-serif
+$font-stack: 'Roboto Mono', 'Roboto', sans-serif
+$bg-color: #F2D185
+$mnu-bg-clr: #50B0C6
+$mnu-hover: #70B6C6
+$mnu-h: 65px
+$btn-clr: #fff
+$btn-bg: #2196F3
+$fnt-clr: #094C5C
+$frm-bgc: #F2F3F5
+
+@mixin shadow($x: 0, $y: 0, $blur: 17px, $flex: 4px, $transp: 0.32)
+  -webkit-box-shadow: $x $y $blur $flex rgba(0,0,0,$transp)
+  -moz-box-shadow: $x $y $blur $flex rgba(0,0,0,$transp)
+  box-shadow: $x $y $blur $flex rgba(0,0,0,$transp)
+  filter: progid:DXImageTransform.Microsoft.shadow(direction=120, color=#000000, strength=10)
+
+
+$extra-small: 480px
+$small: 768px
+$medium: 992px
+$large: 1200px
+
+@mixin respond-to($media)
+  @if $media == exlarge-devs
+    @media only screen and (min-width: $large + 1)
+      @content
+  @else if $media == large-devs
+    @media only screen and (max-width: $large)
+      @content
+  @else if $media == medium-devs
+    @media only screen and (max-width: $medium)
+      @content
+  @else if $media == small-devs
+    @media only screen and (max-width: $small)
+      @content
+  @else if $media == exsmall-devs
+    @media only screen and (max-width: $extra-small)
+      @content
+
+@mixin border-radius($radius)
+  -webkit-border-radius: $radius
+  -moz-border-radius: $radius
+  -ms-border-radius: $radius
+  border-radius: $radius
+
+/*Color scheme: http://colorscheme.ru/#0z61TqasHw0w0*/
+body
+  font-family: $font-stack
+  font-weight: 400
+  font-size: 14px
+  color: $fnt-clr
+  line-height: 1.6
+  -webkit-font-smoothing: antialised
+  background-color: #fff
+  h1,h2,h3,h4
+    font-weight: 600
+    text-transform: uppercase
+    text-align: center
+  h1
+    font-size: 40px
+    font-weight: 600
+  h2
+    font-size: 35px
+    font-weight: 600
+    margin: 5px auto
+  h3
+    font-size: 25px
+    font-weight: 600
+    margin: 5px auto
+  form
+    padding: 15px 30px 65px
+    .button-container
+      display: inline-block
+      float: left
+      button
+        padding: 10px 15px
+        cursor: pointer
+        background-color: #70B6C6
+        margin-bottom: 0
+        &:hover
+          background-color: #89C6C1
+  form, input, textarea, button
+    background-color: $frm-bgc
+  input, textarea, button
+    display: block
+    margin-bottom: 10px
+    font-size: 20px
+    font-weight: 300
+    padding: 5px 10px
+    font-family: $font-stack
+    font-weight: 300
+    color: $fnt-clr
+    border: none
+  input
+    border-bottom: 1px solid $fnt-clr
+  textarea
+    background-color: #DDDDDD
+  .inputError
+    border: 1px solid red
+  #pos-line
+    position: fixed
+    background-color: #E53F2A
+    height: 5px
+    top: 99.5%
+    left: 0
+    width: 5px
+    z-index: 9999
+
+
+.loader
+  position: absolute
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+  background-color: #fefefe
+  z-index: 9999
+  height: 100%
+  .loader_inner
+    width: 200px
+    height: 200px
+    position: absolute
+    left: 50%
+    top: 50%
+    background-image: url("../images/preloader1.gif")
+    background-repeat: no-repeat
+    background-position: center
+    margin: -100px 0 0 -100px
+
+header
+  background-color: $mnu-bg-clr
+  position: fixed
+  width: 100%
+  z-index: 999
+  height: $mnu-h
+
+  +shadow()
+  .logo
+    display: inline-block
+    margin-left: 25px
+    margin-top: 14px
+    img
+      width: 120px
+  nav
+    display: inline-block
+    float: right
+    margin-right: 5%
+    margin-top: 17px
+    +respond-to(small-devs)
+      display: none
+    ul
+      li
+        display: inline-block
+        margin-left: -9px
+        a
+          font-size: 20px
+          text-decoration: none
+          padding: 17px 30px
+          color: white
+          text-transform: uppercase
+          &:hover, &.active
+            border-bottom: 2px solid rgba(255,255,255,0.5)
+
+
+section
+  .section-header
+    text-align: center
+    padding: 55px 0 80px
+    h2
+      display: inline-block
+      border-bottom: 1px solid
+      padding: 0 30px 25px
+  .section-content
+    text-align: center
+    padding-bottom: 120px
+
+#top
+  padding-top: $mnu-h
+  #slider
+    position: relative
+    .introducing
+      position: absolute
+      z-index: 100
+      top: 40%
+      width: 100%
+      text-align: center
+      +respond-to(small-devs)
+        top: 30%
+      h1, p
+        color: #fff
+        width: auto
+      h1
+        border: 6px solid #fff
+        padding: 12px 35px
+        display: inline-block
+        +shadow()
+        +respond-to(small-devs)
+          font-size: 25px
+        +respond-to(exsmall-devs)
+          font-size: 22px
+
+      p
+        text-transform: uppercase
+        padding-top: 10px
+        font-size: 18px
+    .sizer
+      width: 100%
+    img
+      width: 100%
+    article
+      position: absolute
+      width: 100%
+      height: 100%
+      overflow: hidden
+      top: 0
+      left: 0
+      opacity: 0
+      z-index: 0
+      -webkit-transition: .5s ease-out
+      -moz-transition: .5s ease-out
+      -ms-transition: .5s ease-out
+      -o-transition: .5s ease-out
+      transition: .5s ease-out
+      &.show
+        opacity: 1
+        z-index: 1
+
+
+
+#about
+  min-height: 600px
+  background-color: #F2BB85
+  .description
+    display: table-cell
+    width: 30%
+    padding: 0 30px
+    h3
+      margin: 0 0 30px
+    .text
+      text-align: justify
+  .description-center
+    padding: 0
+    img
+      width: 65%
+      +border-radius(50%)
+      +shadow(3px, 3px, 15px, 1px, 0.32)
+
+#works
+  background-color: #F29285
+  .section-content
+    display: table
+    .work
+      display: table-cell
+      width: 30%
+      padding: 0 30px
+      .description
+        text-align: justify
+        h3
+          margin: 15px 0
+      img
+        width: 65%
+        +border-radius(50%)
+        +shadow(3px, 3px, 15px, 1px, 0.32)
+      .link
+        margin-top: 20px
+        a
+          text-decoration: none
+          text-transform: uppercase
+          letter-spacing: 2px
+          font-size: 18px
+          font-weight: 300
+          color: $btn-clr
+          background-color: $btn-bg
+          padding: 10px 30px
+          +shadow(3px, 3px, 15px, 1px, 0.32)
+          &:hover
+            background-color: #36C3FF
+
+#contacts
+  background-color: #F2BB85
+  .section-content
+    padding-bottom: 100px
+  .map
+    width: 100%
+    // iframe
+    //   width: 100% !important
+    #GoogleOffice
+      height: 500px
+      width: 100%
+      .gm-style-iw
+        *
+          display: block
+          width: 100%
+        div
+          div
+            div
+              width: 98% !important
+        h4, p
+          margin: 0
+          padding: 0
+        a
+          color: #4272db
+  .form
+    display: inline-block
+    margin: auto
+    margin-top: 70px
+    +shadow(3px, 3px, 15px, 1px, 0.32)
+    h3
+      background-color: #70B6C6
+      margin: 0
+      padding: 10px 15px
+    form
+      input
+        height: 40px
+        width: 280px
+      textarea
+        width: 400px
+      .success-submit
+        display: none
+        float: right
+        margin-top: 10px
+        font-size: 18px
+
+footer
+  background-color: #F29285
+  .top-row
+    padding: 30px 15px 20px
+    text-align: center
+  .column
+    width: 30%
+    display: table-cell
+    text-align: justify
+    padding: 0 10px
+    .column-title
+      margin-bottom: 10px
+  .bottom-row
+    border-top: 1px solid $fnt-clr
+    padding: 5px 25px
+    .cprt
+      font-size: 20px
